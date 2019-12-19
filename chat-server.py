@@ -24,7 +24,6 @@ def post_room(room):
         os.makedirs('rooms')
     file_name = 'rooms/'+room+'.txt'
     file = open(file_name, 'a+', encoding='utf-8')
-    # print(datetime.now())
     now = datetime.now()
     date_time = now.strftime("%Y-%m-%d, %H:%M:%S")
     line = '['+date_time+'] '+username+': '+maessage+'\n'
@@ -47,7 +46,5 @@ def get_room(room):
         return ''
 
 
-# if __name__ == "__main__":
-    # app.run(debug=True)
-    # app.run(host='0.0.0.0', debug=True, threaded=True, port=8080)
-    # app.run(host='localhost', debug=True, threaded=True, port=8080)
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', debug=True, threaded=True, port=8080)
