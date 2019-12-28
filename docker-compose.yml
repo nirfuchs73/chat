@@ -1,9 +1,18 @@
 version: "3"
 services:
-  chat:
+  client:
     build: ./client
-    container_name: chat
+    container_name: client
     ports:
       - "8080:8080"
     volumes:
       - ./rooms:/app/rooms
+  nginx:
+    restart: always
+    build: ./nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+    # depends_on:
+    #   - client
+            
