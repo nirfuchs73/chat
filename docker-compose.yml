@@ -1,16 +1,32 @@
 version: "3"
 services:
-  client:
+  client1:
     build: ./client
-    container_name: client
-    ports:
-      - "8080:8080"
+    container_name: client1
+    tty: true
+    volumes:
+      - ./rooms:/app/rooms
+  client2:
+    build: ./client
+    container_name: client2
+    tty: true
+    volumes:
+      - ./rooms:/app/rooms
+  client3:
+    build: ./client
+    container_name: client3
+    tty: true
     volumes:
       - ./rooms:/app/rooms
   nginx:
     restart: always
     build: ./nginx
     container_name: nginx
+    tty: true
+    links:
+      - client1
+      - client2
+      - client3
     ports:
       - "80:80"
     # depends_on:
